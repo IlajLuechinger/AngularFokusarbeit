@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    /*const mail = this.logInForm.get('mail').value;
+    const mail = this.logInForm.get('mail').value;
     const pw = this.logInForm.get('password').value;
     const mailPw = mail +";" + pw;
     console.log(mailPw)
-    this.http.post<any>('http://localhost:8080/upload', mailPw);*/
+    this.http.post<any>('http://localhost:4200/upload', mailPw);
   }
 
 }

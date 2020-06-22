@@ -1,4 +1,6 @@
-<h1>hi</h1>
+<body>
+<h1>Projekte</h1>
 <div *ngFor="let project of projects">
-  <h1>{{project.projectTitle}}</h1>
+  <button class="projects" [id]="project.id">{{project.projektName}} </button>
 </div>
+</body>

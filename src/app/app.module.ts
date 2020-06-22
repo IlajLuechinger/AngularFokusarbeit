@@ -7,12 +7,16 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { ProjectListComponent } from './project-list/project-list.component';
+import { KanbanComponent } from './kanban/kanban.component';
+import { AufgabeDetailliertComponent } from './aufgabe-detailliert/aufgabe-detailliert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProjectListComponent,
+    KanbanComponent,
+    AufgabeDetailliertComponent,
   ],
   imports: [
     BrowserModule,

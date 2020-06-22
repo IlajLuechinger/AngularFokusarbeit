@@ -15,7 +15,7 @@ export class ProjectListComponent implements OnInit {
 
   }
 
-  projects: Project[];
+  projects: Project;
 
   ngOnInit() {
     this.getProjects()

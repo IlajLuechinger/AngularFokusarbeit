@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Task} from "../task";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../auth.service";
+import {ProjectService} from "../project.service";
 
 @Component({
   selector: 'app-aufgabe-detailliert',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AufgabeDetailliertComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[] = [];
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private auth: AuthService,
+    private projectService: ProjectService
+  ) { }
 
   ngOnInit() {
+    if(false){
+      this.router.navigate([''])
+    }
+    setTimeout(()=> this.projectService.getSelectedTask().subscribe(data => this.tasks = data), 500);
   }
 
+  logOut(){
+    this.auth.logout();
+  }
+
+  startTimer() {
+    this.router.navigate(['/stopwatch']);
+  }
 }

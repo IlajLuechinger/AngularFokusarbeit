@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { KanbanComponent } from './kanban/kanban.component';
 import { AufgabeDetailliertComponent } from './aufgabe-detailliert/aufgabe-detailliert.component';
+import { StorageServiceModule} from "angular-webstorage-service";
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { AufgabeDetailliertComponent } from './aufgabe-detailliert/aufgabe-detai
     ProjectListComponent,
     KanbanComponent,
     AufgabeDetailliertComponent,
+    StopwatchComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,8 +29,9 @@ import { AufgabeDetailliertComponent } from './aufgabe-detailliert/aufgabe-detai
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    StorageServiceModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

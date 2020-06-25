@@ -1,0 +1,73 @@
+html,
+body {
+  overflow: hidden;
+  margin: 0;
+  display: inline-block;
+  height: 98.7vh;
+  width: 100%;
+  background: #2b2b2b;
+  color: #A0A0A0;
+}
+
+.logOut {
+  background: #323232;
+  color: #A0A0A0;
+  border: #2b2b2b;
+  position: fixed;
+  bottom: 3vh;
+  right: 3vh;
+  font-size: 50px;
+}
+
+h1 {
+  margin-left: 30px;
+  font-size: 100px;
+}
+
+#leftbox {
+  float: left;
+  width: 48%;
+  height: 280px;
+  font-size: 20px;
+  margin-left: 30px;
+}
+
+#rightbox {
+  float: right;
+  width: 48%;
+  height: 280px;
+  margin-left: 30px;
+  font-size: 30px;
+}
+
+.title {
+  font-size: 40px;
+}
+
+button {
+  background: #323232;
+  color: #A0A0A0;
+  border: #323232;
+  margin-bottom: 7%;
+  width: 100%;
+}
+
+button:hover {
+  background: #A0A0A0;
+  color: #323232;
+  border: #A0A0A0;
+}
+
+.info {
+  margin-bottom: 10px;
+}
+
+.logOut {
+  background: #323232;
+  color: #A0A0A0;
+  border: #2b2b2b;
+  position: fixed;
+  bottom: 3vh;
+  right: 3vh;
+  font-size: 50px;
+}

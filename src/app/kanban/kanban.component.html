@@ -1,3 +1,17 @@
 <body>
-  <p>kanban works!</p>
+<div *ngFor="let projectName of projectNames">
+<h1>{{projectName.projektName}}</h1>
+</div>
+<table>
+  <tr>
+    <th>To Do</th>
+    <th>In Progress</th>
+    <th>Testing</th>
+    <th>Done</th>
+  </tr>
+  <div *ngFor="let task of tasks">
+    <button routerLink="/aufgabeDetails/{{task.aufgabeID}}" (click)="postTaskID(task.aufgabeID)">{{task.titel}}</button>
+  </div>
+</table>
+  <button (click)="logOut()" class="logOut">Log out</button>
 </body>

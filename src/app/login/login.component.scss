@@ -5,7 +5,6 @@ body{
   display: inline-block;
   height: 98.9vh;
   width: 100%;
-
   background: #2b2b2b;
   color: #A0A0A0;
 }
@@ -17,18 +16,39 @@ input{
 }
 
 h2{
-  margin-top: 20%;
+  margin-top: 10%;
+  margin-bottom: 5px;
+  font-size: 130px;
   text-align: center;
 }
 
 form{
   margin: auto;
   text-align: center;
+  width: 20%;
+  height: 20%;
 }
 
-.ui-button{
+input {
+  margin: 5px;
+  width: 100%;
+}
+
+input:active{
+  border: aqua;
+}
+
+button{
   background: #323232;
   color: #A0A0A0;
   border: #323232;
   margin: 5px;
+  width: 100%;
 }
+
+button:hover{
+  background: #A0A0A0;
+  color: #323232;
+  border: #A0A0A0;
+}
+

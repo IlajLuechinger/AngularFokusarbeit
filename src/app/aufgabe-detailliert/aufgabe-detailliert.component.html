@@ -1,1 +1,52 @@
-<p>aufgabe-detailliert works!</p>
+<head>
+
+  <!-- CSS property to place div
+      side by side -->
+  <style>
+
+  </style>
+</head>
+
+<body>
+<div *ngFor="let task of tasks">
+
+<h1>{{task.titel}}</h1>
+<div id = "boxes">
+
+
+  <div id = "leftbox">
+    <label class="title">Userstory</label>
+    <div>
+      {{task.userStory}}
+    </div>
+    <label class="title">Beschreibung</label>
+    <div>
+      {{task.beschreibung}}
+    </div>
+  </div>
+  <div id = "rightbox">
+    <div class="info" >
+      <label>Status: </label>
+      <span>{{task.status}}</span>
+    </div>
+    <div class="info">
+    <label>Sollzeit: </label>
+    <span>{{task.sollZeit}}</span>
+    </div>
+    <div class="info">
+      <label>Istzeit: </label>
+      <span>{{task.istZeit}}</span>
+    </div>
+    <div class="info">
+      <label>SollDatum: </label>
+      <span>{{task.sollDatum}}</span>
+    </div>
+    <button (click)="startTimer()" routerLink="/stopuhr" class="info">
+      Arbeit beginnen
+    </button>
+
+  </div>
+</div>
+</div>
+<button (click)="logOut()" class="logOut"></button>
+</body>

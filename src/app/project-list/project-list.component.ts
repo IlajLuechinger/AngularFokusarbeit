@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService} from "../project.service";
 import {Project} from "../project";
+import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 
 @Component({
@@ -11,21 +13,32 @@ import {Project} from "../project";
 export class ProjectListComponent implements OnInit {
 
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService,
+              private  router: Router,
+              private auth: AuthService,
+              ) {
 
   }
 
-  projects: Project;
+  projectArray: Project[] = [];
+
 
   ngOnInit() {
-    this.getProjects()
+      this.getProjects()
+
   }
 
   getProjects(): void {
-    this.projectService.getProjects().subscribe(projects => this.projects = projects)
+    this.projectService.getProjects().subscribe(project => this.projectArray = project)
   }
 
 
 
+  logOut(){
+    this.auth.logout();
+  }
 
+  postID(id: number) {
+    this.projectService.postID(id);
+  }
 }

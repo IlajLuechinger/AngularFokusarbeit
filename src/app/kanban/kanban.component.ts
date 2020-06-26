@@ -14,7 +14,7 @@ import {ProjektName} from "../projekt-name";
 })
 export class KanbanComponent implements OnInit {
 
-  tasks: Task;
+  tasks: Task[] =  [];
   project: Project;
   projectNames: ProjektName[] = [];
 
@@ -26,23 +26,19 @@ export class KanbanComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
-    if(false){
-      this.router.navigate([''])
-    } else {
       this.getTasks();
-      setTimeout(()=>this.projectService.getProjectName().subscribe(data => console.log(data)), 500);
-      setTimeout( () => this.projectService.deleteProjectName(1), 100);
-    }
+      setTimeout(()=>this.projectService.getProjectName().subscribe(data => this.projectNames = data), 500);
   }
 
   getTasks(): void{
-    this.projectService.getTasks().subscribe(tasks => this.tasks = tasks)
+    this.projectService.getTasks().subscribe(data => this.tasks = data);
 }
 
 logOut(){
     this.auth.logout();
 }
+
+
 
 
   postTaskID(aufgabeID: number) {

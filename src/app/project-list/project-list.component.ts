@@ -3,6 +3,7 @@ import { ProjectService} from "../project.service";
 import {Project} from "../project";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
+import {LoginComponent} from "../login/login.component";
 
 
 @Component({
@@ -11,7 +12,6 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-
 
   constructor(private projectService: ProjectService,
               private  router: Router,
@@ -25,7 +25,6 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit() {
       this.getProjects()
-
   }
 
   getProjects(): void {

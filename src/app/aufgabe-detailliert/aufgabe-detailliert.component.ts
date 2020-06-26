@@ -12,8 +12,6 @@ import {ProjectService} from "../project.service";
 export class AufgabeDetailliertComponent implements OnInit {
 
   tasks: Task[] = [];
-
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -22,9 +20,6 @@ export class AufgabeDetailliertComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(false){
-      this.router.navigate([''])
-    }
     setTimeout(()=> this.projectService.getSelectedTask().subscribe(data => this.tasks = data), 500);
   }
 

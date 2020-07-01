@@ -3,22 +3,11 @@ body {
   overflow: hidden;
   margin: 0;
   display: inline-block;
-  height: 98.7vh;
+  height: 97vh;
   width: 100%;
   background: #2b2b2b;
   color: #A0A0A0;
 }
-
-.logOut {
-  background: #323232;
-  color: #A0A0A0;
-  border: #2b2b2b;
-  position: fixed;
-  bottom: 3vh;
-  right: 3vh;
-  font-size: 50px;
-}
-
 h1 {
   margin-left: 30px;
   font-size: 100px;
@@ -39,10 +28,44 @@ h1 {
   margin-left: 30px;
   font-size: 30px;
 }
+.goBack{
+  background: #323232;
+  color: #A0A0A0;
+  border: #2b2b2b;
+  position: fixed;
+  bottom: 3vh;
+  left: 3vh;
+  font-size: 50px;
+  margin-bottom: 0px;
+  width: 20%;
+}
+.goBack:hover{
+  background: #A0A0A0;
+  color: #323232;
+  border: #A0A0A0;
+}
 
 .title {
   font-size: 40px;
 }
+
+
+#boxLeft {
+  float: left;
+  width: 48%;
+  height: 280px;
+  font-size: 20px;
+  margin-left: 30px;
+}
+
+#boxRight {
+  float: right;
+  width: 48%;
+  height: 280px;
+  margin-left: 30px;
+  font-size: 30px;
+}
+
 
 button {
   background: #323232;
@@ -62,12 +85,19 @@ button:hover {
   margin-bottom: 10px;
 }
 
-.logOut {
+.logOut{
   background: #323232;
   color: #A0A0A0;
   border: #2b2b2b;
+  margin-bottom: 0px;
   position: fixed;
   bottom: 3vh;
   right: 3vh;
   font-size: 50px;
+  width: 20%;
+}
+.logOut:hover{
+  background: #A0A0A0;
+  color: #323232;
+  border: #A0A0A0;
 }

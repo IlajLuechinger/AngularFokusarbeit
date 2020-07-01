@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ProjectService} from "../project.service";
+import {Router} from "@angular/router";
+import { Location} from "@angular/common";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-stopwatch',
@@ -7,17 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StopwatchComponent implements OnInit {
 
-  constructor() { }
+  constructor( private projectService: ProjectService,
+               private router: Router,
+               private  location: Location,
+               private auth: AuthService) { }
 
   time: number = 0;
   display ;
   interval;
   timeString: string;
-
-
+  timeWorked: number;
 
 
   ngOnInit() {
+    if (this.auth.getFromSession() == '[true]'){
     this.interval = setInterval(() => {
       if (this.time === 0) {
         this.time++;
@@ -26,6 +33,9 @@ export class StopwatchComponent implements OnInit {
       }
       this.display=this.transform( this.time)
     }, 1000);
+    } else {
+      this.router.navigate([''])
+    }
   }
   transform(value: number): string {
     var sec_num = value;
@@ -44,6 +54,15 @@ export class StopwatchComponent implements OnInit {
 }
 
   stopTimer() {
+    let hours =  parseInt(this.timeString.slice(0,2).toString());
+    let minutes = parseInt(this.timeString.slice(3,5).toString());
+    let seconds = parseInt(this.timeString.slice(6,9).toString());
 
+    this.timeWorked = hours;
+    this.timeWorked += (minutes/60);
+    this.timeWorked += (seconds/3600);
+    console.log(this.timeWorked);
+    this.projectService.postTime(this.timeWorked);
+    setTimeout(() => this.location.back() ,500)
   }
 }

@@ -11,6 +11,7 @@ import { KanbanComponent } from './kanban/kanban.component';
 import { AufgabeDetailliertComponent } from './aufgabe-detailliert/aufgabe-detailliert.component';
 import { StorageServiceModule} from "angular-webstorage-service";
 import { StopwatchComponent } from './stopwatch/stopwatch.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 
 @NgModule({
@@ -23,14 +24,15 @@ import { StopwatchComponent } from './stopwatch/stopwatch.component';
     StopwatchComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    StorageServiceModule,
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        StorageServiceModule,
+        DragDropModule,
+    ],
   providers: [ ],
   bootstrap: [AppComponent]
 })

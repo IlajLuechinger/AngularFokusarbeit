@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Project } from "./project";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Task} from "./task";
 import {ProjektName} from "./projekt-name";
+import {UpdateTask} from "./update-task";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-
-  deleteProjectNameUrl = "http://www.localhost:8080/projects/projectName";
 
   constructor(private http: HttpClient) { }
 
@@ -29,18 +28,17 @@ export class ProjectService {
     return this.http.get<ProjektName[]>(url);
   }
 
-  deleteProjectName(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.deleteProjectNameUrl}/${id}`)
-  }
-
   getTasks(): Observable<Task[]>{
     const url = `http://www.localhost:8080/tasks`;
     return  this.http.get<Task[]>(url)
   }
 
-  getTask(id): Observable<Task>{
-    return this.http.get<Task>(`http://www.localhost:8080/tasks/${id}`)
-  }
+
+  updateTaskStatus(task){
+    const url = "http://www.localhost:8080/tasks/updatedStatus";
+    this.http.post(url, task).subscribe();
+
+}
 
   postTaskID(id){
     const url = "http://www.localhost:8080/tasks/id";
@@ -50,5 +48,10 @@ export class ProjectService {
   getSelectedTask(): Observable<Task[]> {
     const url = "http://www.localhost:8080/tasks/selectedTask";
     return  this.http.get<Task[]>(url);
+  }
+
+  postTime(time){
+    const url = "http://www.localhost:8080/tasks/timeWorked";
+    this.http.post(url, time).subscribe(x => time = x);
   }
 }

@@ -3,6 +3,7 @@ import {Task} from "../task";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {ProjectService} from "../project.service";
+import { Location} from "@angular/common";
 
 @Component({
   selector: 'app-aufgabe-detailliert',
@@ -16,12 +17,17 @@ export class AufgabeDetailliertComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private auth: AuthService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private location: Location,
   ) { }
 
   ngOnInit() {
-    setTimeout(()=> this.projectService.getSelectedTask().subscribe(data => this.tasks = data), 500);
-  }
+    if (this.auth.getFromSession() == '[true]') {
+      setTimeout(() => this.projectService.getSelectedTask().subscribe(data => this.tasks = data), 1500);
+    } else {
+      this.router.navigate([''])
+    }
+    }
 
   logOut(){
     this.auth.logout();
@@ -29,5 +35,9 @@ export class AufgabeDetailliertComponent implements OnInit {
 
   startTimer() {
     this.router.navigate(['/stopwatch']);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

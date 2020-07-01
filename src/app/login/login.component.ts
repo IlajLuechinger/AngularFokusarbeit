@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Login} from "../login";
 import {Person } from "../person";
-import {LOCAL_STORAGE, SESSION_STORAGE, WebStorageService} from "angular-webstorage-service";
+import {SESSION_STORAGE, WebStorageService} from "angular-webstorage-service";
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../auth.service";
@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.postLoginData();
-    setTimeout(()=> this.getUser() ,500);
-    setTimeout(() =>this.router.navigate(['/projects']), 1000);
+    setTimeout(()=> this.getUser() ,1500);
+    setTimeout(() =>this.router.navigate(['/projects']), 2000);
 
   }
 
@@ -54,9 +54,8 @@ export class LoginComponent implements OnInit {
   }
 
   getUser() {
-    this.auth.getUser().subscribe(data => {
-        this.loggedInPerson = data;
-        this.auth.addToSession(this.loggedInPerson);
+    this.auth.getUser().subscribe((data: boolean) => {
+        this.auth.addToSession(data);
     }
     );
   }

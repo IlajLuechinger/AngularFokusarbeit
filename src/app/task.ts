@@ -5,7 +5,7 @@ export interface Task {
   userStory?: string,
   sollZeit?: number,
   istZeit?: number,
-  sollDatum?: any,
+  sollDatum?: Date,
   status?: string,
   personID?: number,
   projektID?: number

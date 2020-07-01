@@ -3,8 +3,6 @@
 
 <h1>{{task.titel}}</h1>
 <div id = "boxes">
-
-
   <div id = "leftbox">
     <label class="title">Userstory</label>
     <div>
@@ -22,11 +20,11 @@
     </div>
     <div class="info">
     <label>Sollzeit: </label>
-    <span>{{task.sollZeit}}</span>
+    <span>{{task.sollZeit | number: '1.2-2'}}</span>
     </div>
     <div class="info">
       <label>Istzeit: </label>
-      <span>{{task.istZeit}}</span>
+      <span>{{task.istZeit | number: '1.2-2'}}</span>
     </div>
     <div class="info">
       <label>SollDatum: </label>
@@ -35,9 +33,16 @@
     <button (click)="startTimer()" routerLink="/stopuhr" class="info">
       Arbeit beginnen
     </button>
-
   </div>
 </div>
 </div>
-<button (click)="logOut()" class="logOut"></button>
+<div id="box">
+  <div id="boxLeft">
+    <button (click)="goBack()" class="goBack">Zurück</button>
+  </div>
+  <div id="boxRight">
+    <button (click)="logOut()" class="logOut">Abmelden</button>
+  </div>
+</div>
+
 </body>

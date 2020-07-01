@@ -3,7 +3,6 @@ import { ProjectService} from "../project.service";
 import {Project} from "../project";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
-import {LoginComponent} from "../login/login.component";
 
 
 @Component({
@@ -24,7 +23,12 @@ export class ProjectListComponent implements OnInit {
 
 
   ngOnInit() {
-      this.getProjects()
+    if (this.auth.getFromSession() == "[true]"){
+      setTimeout(()=>this.getProjects(),100)
+    } else {
+      this.auth.deletePerson();
+      this.router.navigate([''])
+    }
   }
 
   getProjects(): void {

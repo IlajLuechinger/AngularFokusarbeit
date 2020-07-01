@@ -1,17 +1,58 @@
 <body>
+<div class="root">
 <div *ngFor="let projectName of projectNames">
-<h1>{{projectName.projektName}}</h1>
+  <h1>{{projectName.projektName}}</h1>
 </div>
-<table>
-  <tr>
-    <th>To Do</th>
-    <th>In Progress</th>
-    <th>Testing</th>
-    <th>Done</th>
-  </tr>
-  <div *ngFor="let task of tasks">
-    <button routerLink="/aufgabeDetails/{{task.aufgabeID}}" (click)="postTaskID(task.aufgabeID)">{{task.titel}}</button>
+<div class="board">
+  <div class="board-bar">
+    <div class="board-wrapper">
+      <div class="board-columns" cdkDropListGroup>
+        <div class="board-column">
+          <div class="column-title">To Do</div>
+          <div class="container"
+               cdkDropList
+               #todoList="cdkDropList"
+               [cdkDropListData]="todo"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let task of todo" routerLink="/aufgabeDetails/{{task.aufgabeID}}" (click)="postTaskIdAndUpdateTasks(task.aufgabeID)" cdkDrag>{{task.titel}}
+            </div>
+          </div>
+        </div>
+        <div class="board-column">
+          <div class="column-title">In Progress</div>
+          <div class="container"
+               cdkDropList
+               #inProgressList="cdkDropList"
+               [cdkDropListData]="inProgress"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let task of inProgress" routerLink="/aufgabeDetails/{{task.aufgabeID}}" (click)="postTaskIdAndUpdateTasks(task.aufgabeID)" cdkDrag>{{task.titel}}</div>
+          </div>
+        </div>
+        <div class="board-column">
+          <div class="column-title">Testing</div>
+          <div class="container"
+               cdkDropList
+               #testingList="cdkDropList"
+               [cdkDropListData]="testing"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let task of testing" routerLink="/aufgabeDetails/{{task.aufgabeID}}" (click)="postTaskIdAndUpdateTasks(task.aufgabeID)" cdkDrag>{{task.titel}}</div>
+          </div>
+        </div>
+        <div class="board-column">
+          <div class="column-title">Done</div>
+          <div class="container"
+               cdkDropList
+               #doneList="cdkDropList"
+               [cdkDropListData]="done"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let task of done" routerLink="/aufgabeDetails/{{task.aufgabeID}}" (click)="postTaskIdAndUpdateTasks(task.aufgabeID)" cdkDrag>{{task.titel}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</table>
-  <button (click)="logOut()" class="logOut">Log out</button>
+</div>
+    <button (click)="goBack()" class="goBack">Zurück</button>
+    <button (click)="logOut()" class="logOut">Abmelden</button>
+</div>
 </body>

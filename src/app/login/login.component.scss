@@ -27,10 +27,12 @@ form{
   text-align: center;
   width: 20%;
   height: 20%;
+  padding: 5px;
 }
 
 input {
   margin: 5px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -42,8 +44,8 @@ button{
   background: #323232;
   color: #A0A0A0;
   border: #323232;
+  padding: 10px;
   margin: 5px;
-  width: 100%;
 }
 
 button:hover{

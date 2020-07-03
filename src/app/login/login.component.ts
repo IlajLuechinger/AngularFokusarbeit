@@ -38,13 +38,14 @@ export class LoginComponent implements OnInit {
 
   }
 
+  //Die Login Daten senden, dann überprüfen ob der Benutzer existiert, Zum Schluss wir auf die nächste Seite verwiesen, wenn der Benutzer nicht existiert wird er zurück gewiesen
   onSubmit() {
     this.postLoginData();
     setTimeout(()=> this.getUser() ,1500);
-    setTimeout(() =>this.router.navigate(['/projects']), 2000);
-
+    setTimeout(() => this.router.navigate(['/projects']), 2000);
   }
 
+  //Login Daten versenden
   postLoginData(){
     const mail = this.logInForm.get('mail').value;
     const pw = this.logInForm.get('password').value;
@@ -53,10 +54,11 @@ export class LoginComponent implements OnInit {
     this.auth.postLoginData(this.login);
   }
 
+  //Der Wert ob der Benutzer existiert oder nicht wird in die Session geschrieben
   getUser() {
     this.auth.getUser().subscribe((data: boolean) => {
-        this.auth.addToSession(data);
-    }
-    );
+      this.auth.addToSession(data);
+    });
   }
 }
+

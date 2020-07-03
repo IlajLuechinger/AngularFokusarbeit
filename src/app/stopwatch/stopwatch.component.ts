@@ -19,10 +19,11 @@ export class StopwatchComponent implements OnInit {
   time: number = 0;
   display ;
   interval;
-  timeString: string;
+  timeString: string = "00:00:00";
   timeWorked: number;
 
 
+  //Zuerst wird überprüft ob der Benutzer eingeloggt dann wird jede 1000 ms die Zeit un 1 erhöht
   ngOnInit() {
     if (this.auth.getFromSession() == '[true]'){
     this.interval = setInterval(() => {
@@ -37,6 +38,8 @@ export class StopwatchComponent implements OnInit {
       this.router.navigate([''])
     }
   }
+  //Hier werden die gezählten Stunden in Minuten und Stunden um gerechnet
+  //Wenn die Stunden, Minuten oder Sekunden unter 10 sind wird vorne eine 0 angefügt
   transform(value: number): string {
     var sec_num = value;
     var hours   = Math.floor(sec_num / 3600);

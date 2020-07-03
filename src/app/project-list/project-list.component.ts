@@ -21,26 +21,27 @@ export class ProjectListComponent implements OnInit {
 
   projectArray: Project[] = [];
 
-
+  //Falls der Benutzer angemeldet ist werden die Projekte geladen ansonsten wird er zum Login verwiesen
   ngOnInit() {
     if (this.auth.getFromSession() == "[true]"){
       setTimeout(()=>this.getProjects(),100)
     } else {
-      this.auth.deletePerson();
       this.router.navigate([''])
     }
   }
 
+  //Holt die Projekte
   getProjects(): void {
     this.projectService.getProjects().subscribe(project => this.projectArray = project)
   }
 
 
-
+  //Meldet dich ab
   logOut(){
     this.auth.logout();
   }
 
+  //Postet die ID des ausgewählten Projektes
   postID(id: number) {
     this.projectService.postID(id);
   }

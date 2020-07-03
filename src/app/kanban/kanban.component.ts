@@ -9,7 +9,6 @@ import {Project} from "../project";
 import {ProjectService} from "../project.service";
 
 import {AuthService} from "../auth.service";
-import {ProjektName} from "../projekt-name";
 import {UpdateTask} from "../update-task";
 
 
@@ -27,8 +26,7 @@ export class KanbanComponent implements OnInit {
   done: Task[] = [];
   project: Project;
   updateTask: UpdateTask = { };
-  projectNames: ProjektName[] = [];
-  statusKey: number[] = [];
+  projectNames: Project[] = [];
 
 
   constructor(
@@ -39,6 +37,7 @@ export class KanbanComponent implements OnInit {
   ) {
   }
 
+  //Überprüfen ob der Benutzer angemeldet ist, falls ja werden die Aufgaben und der Name des ausgewählten Projektes geladen.
   ngOnInit() {
     if (this.auth.getFromSession() == '[true]') {
       setTimeout(() => this.getTasks(), 500);
@@ -48,6 +47,7 @@ export class KanbanComponent implements OnInit {
     }
   }
 
+  //Die Aufgaben werden in die verscheidenen Stadien gebracht
   getTasks(): void {
     this.projectService.getTasks().subscribe(data => {
       this.tasks = data;
@@ -75,6 +75,7 @@ export class KanbanComponent implements OnInit {
   }
 
 
+  //Die Aufgaben werden entweder im Array an einen neuen Platz geleget oder wechselet den Array
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -86,12 +87,14 @@ export class KanbanComponent implements OnInit {
     }
   }
 
+  //Zuerst wird der Status der Aufgaben gespeichert, dann meldet er sich ab
   logOut() {
-    this.updateTasksID();
+    this.updateTasks();
     this.auth.logout();
   }
 
 
+  //Alle Aufgaben werden zuest aus dem Array gelöscht dann werden alle mit dem neuen Werten in einen Array gespeichert
   allTasksInOneArray(): Task[] {
     while (this.tasks.length != 0) {
       this.tasks.pop();
@@ -99,27 +102,25 @@ export class KanbanComponent implements OnInit {
     this.todo.forEach(task => {
       task.status = 'To Do';
       this.tasks.push(task);
-      this.statusKey.push(1);
     });
     this.inProgress.forEach(task => {
       task.status = 'In Progress';
       this.tasks.push(task);
-      this.statusKey.push(2);
     });
     this.testing.forEach(task => {
       task.status = 'Testing';
       this.tasks.push(task);
-      this.statusKey.push(3);
     });
     this.done.forEach(task => {
       task.status = 'Done';
       this.tasks.push(task);
-      this.statusKey.push(4);
     });
     return this.tasks;
   }
 
-  updateTasksID() {
+
+  //Der Status und die ID werden auf localhost geschrieben.
+  updateTasks() {
     this.allTasksInOneArray();
     this.tasks.forEach(task => {
       switch (task.status.toLowerCase()) {
@@ -151,13 +152,15 @@ export class KanbanComponent implements OnInit {
     });
   }
 
+  //Wir ausgeführt, wenn man aufs div drückt und sendet die ID der Aufgabe auf localhost
   postTaskIdAndUpdateTasks(aufgabeID: number) {
-    this.updateTasksID();
+    this.updateTasks();
     setTimeout(() => this.projectService.postTaskID(aufgabeID), 1000);
   }
 
+  //Speichert die Aufgaben und geht dann auf die vorherige Seite
   goBack() {
-    this.updateTasksID();
+    this.updateTasks();
     this.location.back();
   }
 }

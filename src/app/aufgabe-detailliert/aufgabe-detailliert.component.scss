@@ -1,3 +1,4 @@
+//Den Körper auf die ganze Seite strecken und die Ränder entfernen
 html,
 body {
   overflow: hidden;
@@ -8,11 +9,13 @@ body {
   background: #2b2b2b;
   color: #A0A0A0;
 }
+//Titel stylen
 h1 {
   margin-left: 30px;
   font-size: 100px;
 }
 
+//Ein Div auf die linke Hälfte der Seite fixieren
 #leftbox {
   float: left;
   width: 48%;
@@ -20,7 +23,7 @@ h1 {
   font-size: 20px;
   margin-left: 30px;
 }
-
+//Ein Div auf die rechte Hälfte der Seite fixieren
 #rightbox {
   float: right;
   width: 48%;
@@ -28,76 +31,42 @@ h1 {
   margin-left: 30px;
   font-size: 30px;
 }
-.goBack{
-  background: #323232;
-  color: #A0A0A0;
-  border: #2b2b2b;
-  position: fixed;
-  bottom: 3vh;
-  left: 3vh;
-  font-size: 50px;
-  margin-bottom: 0px;
-  width: 20%;
-}
-.goBack:hover{
-  background: #A0A0A0;
-  color: #323232;
-  border: #A0A0A0;
-}
 
+//Schriftgrösse Titel einstellen
 .title {
   font-size: 40px;
 }
-
-
-#boxLeft {
-  float: left;
-  width: 48%;
-  height: 280px;
-  font-size: 20px;
-  margin-left: 30px;
-}
-
-#boxRight {
-  float: right;
-  width: 48%;
-  height: 280px;
-  margin-left: 30px;
-  font-size: 30px;
-}
-
-
+//Buttons stylen
 button {
   background: #323232;
   color: #A0A0A0;
   border: #323232;
-  margin-bottom: 7%;
   width: 100%;
 }
-
 button:hover {
   background: #A0A0A0;
   color: #323232;
   border: #A0A0A0;
 }
 
-.info {
-  margin-bottom: 10px;
-}
-
+//Position Logout-Button
 .logOut{
-  background: #323232;
-  color: #A0A0A0;
-  border: #2b2b2b;
-  margin-bottom: 0px;
   position: fixed;
   bottom: 3vh;
   right: 3vh;
   font-size: 50px;
   width: 20%;
 }
-.logOut:hover{
-  background: #A0A0A0;
-  color: #323232;
-  border: #A0A0A0;
+
+//Position Zurück-Button
+.goBack{
+  position: fixed;
+  bottom: 3vh;
+  left: 3vh;
+  font-size: 50px;
+  width: 20%;
+}
+//Abstand zwischen den Informationen
+.info {
+  margin-bottom: 10px;
 }

@@ -1,5 +1,6 @@
 <body>
 ﻿<h2 class="center">Login</h2>
+<!-- Form um Anmeldedaten anzugeben -->
 <form [formGroup]="logInForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="form-group">
     <label>E-Mail:</label>
@@ -14,12 +15,13 @@
     <input type="password" formControlName="password" placeholder="Passwort" class="form-control"/>
   </div>
   <div class="form-group">
-    <button type="submit" value="submit">
+    <!-- Man kann die Form auch mit der Enter-Taste bestätigen --->
+    <button (keyup.enter)="onSubmit()" type="submit" value="submit">
       Login
     </button>
   </div>
   <div>
-    <label  FormControlName="error">{{error}}</label>
+    <label class="error" FormControlName="error">{{error}}</label>
   </div>
 </form>
 </body>

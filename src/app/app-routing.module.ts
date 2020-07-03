@@ -6,7 +6,7 @@ import {KanbanComponent} from "./kanban/kanban.component";
 import {AufgabeDetailliertComponent} from "./aufgabe-detailliert/aufgabe-detailliert.component";
 import {StopwatchComponent} from "./stopwatch/stopwatch.component";
 
-
+//Hier werden die Routen festgelegt
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'projects', component: ProjectListComponent},

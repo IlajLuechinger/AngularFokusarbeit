@@ -1,3 +1,4 @@
+//Den Körper auf die ganze Seite strecken und die Ränder entfernen
 html,
 body {
   overflow: hidden;
@@ -9,12 +10,7 @@ body {
   color: #A0A0A0;
 }
 
-.time {
-  margin-top: 49vh;
-  font-size: 100px;
-  text-align: center;
-}
-
+//Button stylen
 button {
   background: #323232;
   color: #A0A0A0;
@@ -23,13 +19,18 @@ button {
   font-size: 30px;
   width: 20%;
 }
-
 button:hover {
   background: #A0A0A0;
   color: #323232;
   border: #A0A0A0;
 }
+.time{
+  margin-top: 49vh;
+  font-size: 100px;
+  text-align: center;
+}
 
+//Button in die Mitte platzieren
 .buttonCenter{
   display: flex;
   justify-content: center;

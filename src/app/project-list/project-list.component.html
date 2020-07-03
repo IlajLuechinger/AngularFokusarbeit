@@ -1,5 +1,6 @@
 <body>
 <h1>Projekte</h1>
+<!-- Jedes Projekt im Array wird abgebildet -->
 <div *ngFor="let project of projectArray">
   <button (click)="postID(project.id)" [id]="project.id" class="projects" routerLink="/kanban/{{project.id}}">{{project.projektName}} </button>
 </div>

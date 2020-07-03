@@ -21,6 +21,7 @@ export class AufgabeDetailliertComponent implements OnInit {
     private location: Location,
   ) { }
 
+  //Überprüfen ob es den Benutzer gibt, falls ja die ausgewählte Aufgabe holen, sonst zum Login Screen
   ngOnInit() {
     if (this.auth.getFromSession() == '[true]') {
       setTimeout(() => this.projectService.getSelectedTask().subscribe(data => this.tasks = data), 1500);
@@ -29,14 +30,17 @@ export class AufgabeDetailliertComponent implements OnInit {
     }
     }
 
+    //Abmelden
   logOut(){
     this.auth.logout();
   }
 
+  //Auf die Stoppuhr wechseln
   startTimer() {
     this.router.navigate(['/stopwatch']);
   }
 
+  //Auf die vorherige Seite gehen
   goBack() {
     this.location.back();
   }

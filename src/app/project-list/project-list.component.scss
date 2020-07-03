@@ -1,3 +1,4 @@
+//Den Körper auf die ganze Seite strecken und die Ränder entfernen
 html,
 body{
   overflow: hidden;
@@ -9,11 +10,13 @@ body{
   color: #A0A0A0;
 }
 
+//Den Titel formattieren (Abstand und Textgrösse)
 h1{
   margin-left: 30px;
   font-size: 100px;
 }
 
+//Die Projekte stylen (Grösse, Abstand und Farbe)
 .projects{
   background: #323232;
   color: #A0A0A0;
@@ -24,6 +27,7 @@ h1{
   margin: 3px 30px;
 }
 
+//Button stylyen (Farbe, Position und Grösse)
 .logOut{
   background: #323232;
   color: #A0A0A0;
